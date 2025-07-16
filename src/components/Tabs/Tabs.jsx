@@ -1,6 +1,6 @@
 export const Tabs = ({ activeTabId, onTabSelected, tabs }) => {
   const isValidId = tabs.some(t => t.id === activeTabId);
-  const realActiveTabId = isValidId ? activeTabId : tabs[0]?.id === 0;
+  const realActiveTabId = isValidId ? activeTabId : tabs[0]?.id;
 
   return (
     <div data-cy="TabsComponent">
@@ -29,9 +29,7 @@ export const Tabs = ({ activeTabId, onTabSelected, tabs }) => {
       </div>
 
       <div className="block" data-cy="TabContent">
-        {tabs.map(tab => {
-          return tab.id === activeTabId && tab.content;
-        })}
+        {tabs.find(tab => tab.id === activeTabId)?.content}
       </div>
     </div>
   );

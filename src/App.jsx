@@ -16,10 +16,7 @@ export const App = () => {
   return (
     <div className="section">
       <h1 className="title">
-        Selected tab is{' '}
-        {tabs.map(tab => {
-          return tab.id === activeTabId && tab.title;
-        })}
+        Selected tab is{tabs.find(tab => tab.id === activeTabId)?.title}
       </h1>
 
       <Tabs
